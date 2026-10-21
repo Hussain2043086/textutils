@@ -1,38 +1,741 @@
-.App {
+
+/* ========================================
+   TEXTUTILS PRO — COMPLETE STYLESHEET
+   ======================================== */
+
+/* 1. Global styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f5f6ff;
+  color: #292343;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.App,
+.app {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f6ff;
+  color: #292343;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  transition: background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #b8a9ff;
+  outline-offset: 3px;
+}
+
+a {
+  color: inherit;
+}
+
+/* 2. Navigation bar */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: 70px;
+  padding: 14px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid #e9e5f5;
+  backdrop-filter: blur(12px);
+}
+
+nav a {
+  margin-right: 18px;
+  text-decoration: none;
+  color: #62577f;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: #7257d8;
+}
+
+nav button {
+  padding: 9px 13px;
+  border: 1px solid #e4ddfa;
+  border-radius: 10px;
+  background: #f4f0ff;
+  color: #6246c4;
+  font-weight: 600;
+}
+
+/* 3. Main page layout */
+.main-content {
+  width: min(1080px, 92%);
+  margin: 0 auto;
+  padding: 28px 0 55px;
+}
+
+.app-container {
+  width: min(1080px, 92%);
+  margin: 0 auto;
+}
+
+/* 4. Hero / welcome section */
+.hero {
+  padding: 48px 18px 42px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.hero h1 {
+  max-width: 850px;
+  margin: 0 auto 18px;
+  color: #292343;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -1.5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.hero p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: #77738d;
+  font-size: 16px;
+  line-height: 1.8;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.hero .highlight,
+.hero span {
+  color: #7257d8;
+}
+
+/* 5. Section headings */
+h1,
+h2,
+h3 {
+  line-height: 1.3;
+}
+
+h2 {
+  margin: 0 0 12px;
+  color: #292343;
+  font-size: 28px;
+  font-weight: 750;
+}
+
+h3 {
+  color: #342d4d;
+}
+
+p {
+  line-height: 1.7;
+}
+
+/* 6. Editor card */
+.editor-card {
+  padding: 30px;
+  margin: 0 0 35px;
+  background: #ffffff;
+  border: 1px solid #e9e5f4;
+  border-radius: 22px;
+  box-shadow: 0 12px 35px rgba(56, 39, 100, 0.06);
+}
+
+.editor-heading {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 22px;
 }
 
-.App-link {
-  color: #61dafb;
+.editor-heading h2 {
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.editor-heading p {
+  margin: 5px 0 0;
+  color: #89849a;
+  font-size: 14px;
+}
+
+/* 7. Text editor */
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 210px;
+  padding: 18px;
+  resize: vertical;
+  border: 1px solid #e3deef;
+  border-radius: 14px;
+  outline: none;
+  background: #fcfbff;
+  color: #292343;
+  font-size: 15px;
+  line-height: 1.8;
+  transition: border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+textarea::placeholder,
+input::placeholder {
+  color: #a19bb4;
+}
+
+textarea:focus {
+  border-color: #8d75e6;
+  box-shadow: 0 0 0 4px rgba(114, 87, 216, 0.12);
+}
+
+/* 8. Word and character statistics */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 22px 0;
+}
+
+.stat {
+  padding: 18px 12px;
+  text-align: center;
+  background: #f6f3ff;
+  border: 1px solid #eee8ff;
+  border-radius: 15px;
+  transition: transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.stat:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(56, 39, 100, 0.07);
+}
+
+.stat strong,
+.stat span {
+  display: block;
+}
+
+.stat strong {
+  color: #7257d8;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.stat span {
+  margin-top: 7px;
+  color: #77718e;
+  font-size: 12px;
+}
+
+/* 9. Editor toolbar */
+.toolbar,
+.note-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.toolbar button,
+.note-actions button {
+  padding: 11px 16px;
+  border: 1px solid #e2dcf2;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #58467f;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.toolbar button:hover,
+.note-actions button:hover {
+  background: #f2edff;
+  border-color: #c7b8fa;
+  box-shadow: 0 5px 14px rgba(56, 39, 100, 0.08);
+}
+
+.note-actions .save-note-btn,
+.save-note-btn {
+  background: #7257d8;
+  color: #ffffff;
+  border: 1px solid #7257d8;
+  box-shadow: 0 5px 14px rgba(114, 87, 216, 0.2);
+}
+
+.note-actions .save-note-btn:hover,
+.save-note-btn:hover {
+  background: #5b40c4;
+  border-color: #5b40c4;
+  box-shadow: 0 8px 20px rgba(114, 87, 216, 0.25);
+}
+
+.note-actions .new-note-btn,
+.new-note-btn {
+  background: #ffffff;
+  color: #7257d8;
+  border: 1px solid #d9d0f5;
+}
+
+.note-actions .new-note-btn:hover,
+.new-note-btn:hover {
+  background: #f2edff;
+}
+
+/* 10. Input labels and note title */
+.field-label {
+  display: block;
+  margin: 14px 0 8px;
+  color: #51466d;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.note-title-input,
+.notes-search {
+  display: block;
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid #e4dff0;
+  border-radius: 11px;
+  outline: none;
+  background: #fcfbff;
+  color: #292343;
+  font-size: 14px;
+  transition: border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.note-title-input {
+  margin-bottom: 15px;
+}
+
+.note-title-input:focus,
+.notes-search:focus {
+  border-color: #8d75e6;
+  box-shadow: 0 0 0 4px rgba(114, 87, 216, 0.11);
+}
+
+/* 11. Saved Notes section */
+.notes-section {
+  padding-top: 30px;
+  scroll-margin-top: 90px;
+}
+
+.notes-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.notes-heading h2 {
+  margin: 0 0 7px;
+  font-size: 29px;
+}
+
+.notes-heading p {
+  margin: 0;
+  color: #89849a;
+  font-size: 14px;
+}
+
+.notes-count {
+  padding: 9px 14px;
+  border-radius: 30px;
+  background: #eee9ff;
+  color: #6448ca;
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.notes-search {
+  margin: 0 0 22px;
+  background: #ffffff;
+}
+
+/* 12. Notes grid */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 20px;
+}
+
+/* 13. Individual note cards */
+.note-card {
+  min-width: 0;
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid #e9e5f4;
+  border-radius: 17px;
+  box-shadow: 0 6px 22px rgba(56, 39, 100, 0.045);
+  transition: transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.note-card:hover {
+  transform: translateY(-4px);
+  border-color: #d1c4fa;
+  box-shadow: 0 14px 30px rgba(56, 39, 100, 0.10);
+}
+
+.note-card h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.note-preview {
+  color: #77738b;
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.note-date {
+  display: block;
+  margin-top: 15px;
+  color: #9690a7;
+  font-size: 11px;
+}
+
+/* 14. Note card actions */
+.note-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.note-card-actions button {
+  padding: 9px 13px;
+  background: #eee9ff;
+  color: #6448ca;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.note-card-actions button:hover {
+  background: #e0d7ff;
+}
+
+.note-card-actions .delete-note-btn {
+  background: #fff0f1;
+  color: #c44e5d;
+}
+
+.note-card-actions .delete-note-btn:hover {
+  background: #ffe0e3;
+}
+
+/* 15. Empty notes state */
+.empty-notes {
+  padding: 45px 20px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px dashed #d8d0e9;
+  border-radius: 17px;
+}
+
+.empty-icon {
+  color: #7257d8;
+  font-size: 38px;
+}
+
+.empty-notes h3 {
+  margin: 12px 0 8px;
+  font-size: 19px;
+}
+
+.empty-notes p {
+  max-width: 420px;
+  margin: 0 auto;
+  color: #89849a;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* 16. Tips and footer */
+.tips {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 22px;
+  margin-top: 35px;
+  border: 1px solid #e6ddff;
+  border-radius: 16px;
+  background: #f0ecff;
+  color: #51466d;
+}
+
+footer {
+  padding: 25px 15px;
+  text-align: center;
+  color: #89849a;
+  font-size: 13px;
+}
+
+/* 17. Dark mode */
+.dark,
+.dark.App,
+.dark.app {
+  background: #151525;
+  color: #f2efff;
+}
+
+.dark nav {
+  background: rgba(28, 26, 46, 0.96);
+  border-color: #39334d;
+}
+
+.dark nav a {
+  color: #d2c9ed;
+}
+
+.dark nav a:hover {
+  color: #b9a7ff;
+}
+
+.dark nav button {
+  background: #352b55;
+  color: #e0d5ff;
+  border-color: #494064;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark .hero h1 {
+  color: #f2efff;
+}
+
+.dark .hero p,
+.dark .notes-heading p {
+  color: #b4adc9;
+}
+
+.dark .editor-card,
+.dark .note-card,
+.dark .empty-notes {
+  background: #211e33;
+  border-color: #39334d;
+}
+
+.dark textarea,
+.dark .note-title-input,
+.dark .notes-search {
+  background: #19172a;
+  color: #f2efff;
+  border-color: #403954;
+}
+
+.dark .field-label {
+  color: #d2c9ed;
+}
+
+.dark .stat {
+  background: #292540;
+  border-color: #40375f;
+}
+
+.dark .stat span,
+.dark .note-preview {
+  color: #b4adc9;
+}
+
+.dark .toolbar button,
+.dark .note-actions button,
+.dark .note-card-actions button {
+  background: #302943;
+  color: #e0d5ff;
+  border-color: #494064;
+}
+
+.dark .note-actions .save-note-btn,
+.dark .save-note-btn {
+  background: #7257d8;
+  color: #ffffff;
+  border-color: #7257d8;
+}
+
+.dark .note-actions .new-note-btn,
+.dark .new-note-btn {
+  background: #29253d;
+  color: #d6caff;
+  border-color: #403954;
+}
+
+.dark .notes-count {
+  background: #352b55;
+  color: #d6caff;
+}
+
+.dark .note-card-actions .delete-note-btn {
+  background: #482a3a;
+  color: #ffb6c0;
+}
+
+.dark .empty-notes p {
+  color: #b4adc9;
+}
+
+.dark .tips {
+  background: #292540;
+  border-color: #40375f;
+  color: #d2c9ed;
+}
+
+.dark footer {
+  color: #aaa3c1;
+}
+
+/* 18. Responsive design */
+@media (max-width: 760px) {
+  nav {
+    padding: 14px 4%;
   }
-  to {
-    transform: rotate(360deg);
+
+  nav a {
+    margin-right: 10px;
+    font-size: 13px;
+  }
+
+  .main-content,
+  .app-container {
+    width: 94%;
+  }
+
+  .hero {
+    padding: 35px 8px;
+  }
+
+  .editor-card {
+    padding: 22px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .notes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    gap: 10px;
+  }
+
+  nav a {
+    margin-right: 8px;
+    font-size: 12px;
+  }
+
+  .main-content,
+  .app-container {
+    width: 92%;
+    padding-top: 20px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+    letter-spacing: -0.8px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .editor-card {
+    padding: 17px;
+    border-radius: 16px;
+  }
+
+  .editor-heading h2,
+  .notes-heading h2 {
+    font-size: 23px;
+  }
+
+  textarea {
+    min-height: 175px;
+    padding: 13px;
+  }
+
+  .toolbar button,
+  .note-actions button {
+    flex: 1 1 auto;
+  }
+
+  .note-card {
+    padding: 18px;
+  }
+
+  .tips {
+    padding: 17px;
+  }
+}
+
+/* 19. Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
